@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 23d25aa697be10f43aaaea10e485f85b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - trzonekPocisku: {instanceID: 0}
+  - obudowaPocisku: {instanceID: 0}
+  - efektyCzasteczkowe: {instanceID: 0}
+  - animatorBroni: {instanceID: 0}
+  - wspolrzedneLufy: {instanceID: 0}
+  - wspolrzedneOdrzutu: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
