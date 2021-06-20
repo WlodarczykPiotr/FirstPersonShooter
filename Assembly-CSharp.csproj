@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{BBF31A51-4DDC-4918-A637-307C7199073D}</ProjectGuid>
+    <ProjectGuid>{2946DAD8-13E6-EDED-2E95-A719A55DDF48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,8 +53,9 @@
     <UnityVersion>2020.2.2f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\ModularFirstPersonController\FirstPersonController\FirstPersonController.cs" />
     <Compile Include="Assets\Scripts\ProsteStrzelanie.cs" />
+    <Compile Include="Assets\Scripts\Rozgladanie.cs" />
+    <Compile Include="Assets\Scripts\Ruch.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Audio\ReadMe.txt" />

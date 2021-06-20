@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProsteStrzelanie : MonoBehaviour
 {
@@ -58,7 +55,7 @@ public class ProsteStrzelanie : MonoBehaviour
         if (!trzonekPocisku) return;
 
         // Utworzenie instacji trzonka pocisku
-        GameObject trzonekOdPocisku = Instantiate(trzonekPocisku, wspolrzedneLufy.position, wspolrzedneLufy.rotation) as GameObject;
+        GameObject trzonekOdPocisku = Instantiate(trzonekPocisku, wspolrzedneLufy.position, wspolrzedneLufy.rotation);
 
         // Nadanie pociskowi mocy wystrzalu
         trzonekOdPocisku.GetComponent<Rigidbody>().AddForce(wspolrzedneLufy.forward * mocWystrzalu);
