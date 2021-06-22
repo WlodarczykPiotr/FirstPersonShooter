@@ -6,13 +6,17 @@ public class Ruch : MonoBehaviour
     public Transform lokalizacjaGruntu;
     public LayerMask warstwaGruntu;
 
-    public float predkoscRuchu = 12f;
-    public float grawitacja = -10f;
-    public float odlegloscDoGruntu = 0.4f;
-    public float wysokoscSkoku = 2f;
+    [SerializeField]
+    private float predkoscRuchu = 6f;
+    [SerializeField]
+    private float grawitacja = 0f;
+    [SerializeField]
+    private float odlegloscDoGruntu = 0.4f;
+    [SerializeField]
+    private float wysokoscSkoku = 2f;
 
-    private float pozycjaKlawiaturyOX; // przesuniecie kontrolera postaci w prawo lub w lewo
-    private float pozycjaKlawiaturyOZ; // przesuniecie kontrolera postaci do przodu lub do tylu
+    private float wejscieKlawiaturyOX; // przesuniecie kontrolera postaci w prawo lub w lewo
+    private float wejscieKlawiaturyOZ; // przesuniecie kontrolera postaci do przodu lub do tylu
 
     private bool czyNaGruncie;
 
@@ -23,10 +27,10 @@ public class Ruch : MonoBehaviour
     private void Update()
     {
         // Pobieranie danych wejsciowych z klawiatury dla kontrolera postaci w celu poruszania nim 
-        pozycjaKlawiaturyOX = Input.GetAxis("Horizontal");
-        pozycjaKlawiaturyOZ = Input.GetAxis("Vertical");
+        wejscieKlawiaturyOX = Input.GetAxis("Horizontal");
+        wejscieKlawiaturyOZ = Input.GetAxis("Vertical");
 
-        kierunekRuchu = transform.right * pozycjaKlawiaturyOX + transform.forward * pozycjaKlawiaturyOZ;
+        kierunekRuchu = transform.right * wejscieKlawiaturyOX + transform.forward * wejscieKlawiaturyOZ;
 
         kontrolerPostaci.Move(kierunekRuchu * predkoscRuchu * Time.deltaTime);
         
