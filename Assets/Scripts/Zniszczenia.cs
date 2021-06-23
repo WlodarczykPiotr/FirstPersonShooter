@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Zniszczenia : MonoBehaviour
@@ -8,7 +10,7 @@ public class Zniszczenia : MonoBehaviour
     private float odlegloscDoCelu;
     [SerializeField]
     private float maksymalnyDystansDoAtaku = 15f;
-    
+
     // Update is called once per frame
     private void Update()
     {
@@ -16,16 +18,20 @@ public class Zniszczenia : MonoBehaviour
         {
             RaycastHit strzal;
 
-            if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out strzal))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out strzal))
             {
                 odlegloscDoCelu = strzal.distance;
 
                 if (odlegloscDoCelu < maksymalnyDystansDoAtaku)
                 {
-                    strzal.transform.SendMessage("Obrazenia", poziomUszkodzen, SendMessageOptions.DontRequireReceiver);
-                }
-            }
+                    float[] parametry_0DAMAGE_1DISTANCE = new float[2];
+                    parametry_0DAMAGE_1DISTANCE[0] = poziomUszkodzen;
+                    parametry_0DAMAGE_1DISTANCE[1] = odlegloscDoCelu;
 
+                    strzal.transform.SendMessage("Obrazenia", parametry_0DAMAGE_1DISTANCE, SendMessageOptions.DontRequireReceiver);
+                }
+
+            }
         }
     }
 }
