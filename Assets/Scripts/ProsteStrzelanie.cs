@@ -20,7 +20,7 @@ public class ProsteStrzelanie : MonoBehaviour
     
     [Header("Ustawienia")]
 
-    [Tooltip("Określ czas do zniszczenia modelu obudowy i trzonka pocisku")]
+    [Tooltip("Określ czas do zniszczenia modelu obudowy pocisku")]
     [SerializeField] private float czasZniszczenia = 5f;
 
     [Tooltip("Predkosc pocisku")]
@@ -28,8 +28,7 @@ public class ProsteStrzelanie : MonoBehaviour
 
     [Tooltip("Szybkosc wyrzutu modelu obudowy pocisku")]
     [SerializeField] private float mocWyrzutu = 100f;
-
-
+    
     private void Start()
     {
         if (!wspolrzedneLufy) wspolrzedneLufy = GetComponent<Transform>();
@@ -41,8 +40,11 @@ public class ProsteStrzelanie : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (Amunicja.aktualnaAmunicja <= 0) return;
+
             animatorBroni.SetTrigger("Fire");
             dzwiekWystrzalu.Play();
+            Amunicja.aktualnaAmunicja--;
         }
     }
 
@@ -61,12 +63,6 @@ public class ProsteStrzelanie : MonoBehaviour
 
         // Nadanie pociskowi mocy wystrzalu
         trzonekOdPocisku.GetComponent<Rigidbody>().AddForce(wspolrzedneLufy.forward * mocWystrzalu);
-
-        //Nadanie momentu obrotowego troznkowi pocisku, aby obracał sie w losowym kierunku
-        trzonekOdPocisku.GetComponent<Rigidbody>().AddTorque(new Vector3(0, UnityEngine.Random.Range(100f, 500f), UnityEngine.Random.Range(100f, 1000f)), ForceMode.Force);
-
-        //Zniszczenie troznka pocisku po X sekundach
-        Destroy(trzonekOdPocisku, czasZniszczenia);
     }
 
     // Ta funkcja tworzy obudowe w szczelinie wyrzutowej

@@ -16,6 +16,8 @@ public class Zniszczenia : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (Amunicja.aktualnaAmunicja <= 0) return;
+
             RaycastHit strzal;
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out strzal))
@@ -24,13 +26,9 @@ public class Zniszczenia : MonoBehaviour
 
                 if (odlegloscDoCelu < maksymalnyDystansDoAtaku)
                 {
-                    float[] parametry_0DAMAGE_1DISTANCE = new float[2];
-                    parametry_0DAMAGE_1DISTANCE[0] = poziomUszkodzen;
-                    parametry_0DAMAGE_1DISTANCE[1] = odlegloscDoCelu;
-
-                    strzal.transform.SendMessage("Obrazenia", parametry_0DAMAGE_1DISTANCE, SendMessageOptions.DontRequireReceiver);
+                    ushort obrazenia = poziomUszkodzen;
+                    strzal.transform.SendMessage("Obrazenia", obrazenia, SendMessageOptions.DontRequireReceiver);
                 }
-
             }
         }
     }

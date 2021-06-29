@@ -7,22 +7,30 @@ public class Komputer : MonoBehaviour
     [SerializeField]
     private ushort zdrowiePrzeciwnika = 100;
 
-    private IEnumerator Obrazenia(float[] parametry_0DAMAGE_1DISTANCE)
-    {
-        if (parametry_0DAMAGE_1DISTANCE[1] < 2.5f) yield return new WaitForSeconds(0.125f);
-        else if (parametry_0DAMAGE_1DISTANCE[1] > 2.5f && parametry_0DAMAGE_1DISTANCE[1] < 5f) yield return new WaitForSeconds(0.25f);
-        else if (parametry_0DAMAGE_1DISTANCE[1] > 5f && parametry_0DAMAGE_1DISTANCE[1] < 10f) yield return new WaitForSeconds(0.5f);
-        else if (parametry_0DAMAGE_1DISTANCE[1] > 10f) yield return new WaitForSeconds(1f);
+    private ushort obrazenia;
 
-        zdrowiePrzeciwnika -= (ushort)parametry_0DAMAGE_1DISTANCE[0];
+    private void Obrazenia(ushort obrazenia)
+    {
+        this.obrazenia = obrazenia;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        //Debug.Log(zdrowiePrzeciwnika);
+
         if (zdrowiePrzeciwnika <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.tag == "pocisk")
+        {
+            zdrowiePrzeciwnika -= obrazenia;
+            Destroy(collision.gameObject);
         }
     }
 }
