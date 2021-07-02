@@ -40,11 +40,11 @@ public class ProsteStrzelanie : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Amunicja.aktualnaAmunicja <= 0) return;
+            if (Amunicja.aktualnaAmunicjaWMagazynku <= 0) return;
 
             animatorBroni.SetTrigger("Fire");
             dzwiekWystrzalu.Play();
-            Amunicja.aktualnaAmunicja--;
+            Amunicja.aktualnaAmunicjaWMagazynku--;
         }
     }
 

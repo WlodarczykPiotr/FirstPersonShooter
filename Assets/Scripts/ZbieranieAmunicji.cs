@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ZbieranieAmunicji : MonoBehaviour
 {
+    [SerializeField]
+    private ushort iloscAmunicjiWSkrzynce;
+
     private AudioSource dzwiekZebraniaAmunicji;
 
     private void Start()
@@ -15,7 +18,9 @@ public class ZbieranieAmunicji : MonoBehaviour
     {
         if (collision.tag == "gracz")
         {
-            Amunicja.aktualnaAmunicja += 10;
+            if (Amunicja.aktualnaAmunicjaWMagazynku <= 0) Amunicja.aktualnaAmunicjaWMagazynku += iloscAmunicjiWSkrzynce;
+            else Amunicja.aktualnaAmunicjaWEkwipunku += iloscAmunicjiWSkrzynce;
+
             dzwiekZebraniaAmunicji.Play();
             Destroy(this.gameObject, 0.25f);
         }

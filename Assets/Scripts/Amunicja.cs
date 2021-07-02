@@ -5,20 +5,32 @@ using UnityEngine.UI;
 
 public class Amunicja : MonoBehaviour
 {
-    [SerializeField]
-    private byte lokalnaAmunicja;
-    [SerializeField]
-    private GameObject iloscAmunicji;
 
-    public static byte aktualnaAmunicja;
+    [SerializeField]
+    private GameObject iloscAmunicjiWEkwipunku, iloscAmunicjiWMagazynku;
+
+    private ushort amunicjaWEkwipunku, amunicjaWMagazynku, pojemnoscMagazynka = 25;
+    public static ushort aktualnaAmunicjaWEkwipunku, aktualnaAmunicjaWMagazynku;
 
     // Update is called once per frame
     private void Update()
     {
-        if (lokalnaAmunicja != aktualnaAmunicja)
+        if (amunicjaWMagazynku != aktualnaAmunicjaWMagazynku)
         {
-            lokalnaAmunicja = aktualnaAmunicja;
-            iloscAmunicji.GetComponent<Text>().text = "" + lokalnaAmunicja;
+            amunicjaWMagazynku = aktualnaAmunicjaWMagazynku;
+            iloscAmunicjiWMagazynku.GetComponent<Text>().text = amunicjaWMagazynku.ToString();
+        }
+
+        if (amunicjaWEkwipunku != aktualnaAmunicjaWEkwipunku)
+        {
+            amunicjaWEkwipunku = aktualnaAmunicjaWEkwipunku;
+            iloscAmunicjiWEkwipunku.GetComponent<Text>().text = amunicjaWEkwipunku.ToString();
+        }
+
+        if (aktualnaAmunicjaWMagazynku <= 0 && aktualnaAmunicjaWEkwipunku >= pojemnoscMagazynka)
+        {
+            aktualnaAmunicjaWMagazynku += pojemnoscMagazynka;
+            aktualnaAmunicjaWEkwipunku -= pojemnoscMagazynka;
         }
     }
 }

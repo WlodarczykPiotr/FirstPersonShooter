@@ -5,11 +5,11 @@ using UnityEngine;
 public class Komputer : MonoBehaviour
 {
     [SerializeField]
-    private ushort zdrowiePrzeciwnika = 100;
+    private short zdrowiePrzeciwnika = 100;
 
-    private ushort obrazenia;
+    private short obrazenia;
 
-    private void Obrazenia(ushort obrazenia)
+    private void Obrazenia(short obrazenia)
     {
         this.obrazenia = obrazenia;
     }

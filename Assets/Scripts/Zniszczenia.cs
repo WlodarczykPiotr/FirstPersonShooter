@@ -5,7 +5,7 @@ using UnityEngine;
 public class Zniszczenia : MonoBehaviour
 {
     [SerializeField]
-    private ushort poziomUszkodzen = 10;
+    private short poziomUszkodzen = 10;
     [SerializeField]
     private float odlegloscDoCelu;
     [SerializeField]
@@ -16,7 +16,7 @@ public class Zniszczenia : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (Amunicja.aktualnaAmunicja <= 0) return;
+            if (Amunicja.aktualnaAmunicjaWMagazynku <= 0) return;
 
             RaycastHit strzal;
 
@@ -26,7 +26,7 @@ public class Zniszczenia : MonoBehaviour
 
                 if (odlegloscDoCelu < maksymalnyDystansDoAtaku)
                 {
-                    ushort obrazenia = poziomUszkodzen;
+                    short obrazenia = poziomUszkodzen;
                     strzal.transform.SendMessage("Obrazenia", obrazenia, SendMessageOptions.DontRequireReceiver);
                 }
             }
