@@ -42,6 +42,7 @@ public class ProsteStrzelanie : MonoBehaviour
         {
             if (Amunicja.aktualnaAmunicjaWMagazynku <= 0) return;
 
+            animatorBroni.enabled = true;
             animatorBroni.SetTrigger("Fire");
             dzwiekWystrzalu.Play();
             Amunicja.aktualnaAmunicjaWMagazynku--;
@@ -74,10 +75,10 @@ public class ProsteStrzelanie : MonoBehaviour
         GameObject obudowaOdPocisku = Instantiate(obudowaPocisku, wspolrzedneOdrzutu.position, wspolrzedneOdrzutu.rotation);
 
         //Dodanie siły do obudowy, aby ją wypchnać
-        obudowaOdPocisku.GetComponent<Rigidbody>().AddExplosionForce(UnityEngine.Random.Range(mocWyrzutu, mocWyrzutu * 3f), (wspolrzedneOdrzutu.position - wspolrzedneOdrzutu.right * 0.3f - wspolrzedneOdrzutu.up * 0.6f), 1f);
+        obudowaOdPocisku.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(mocWyrzutu, mocWyrzutu * 3f), (wspolrzedneOdrzutu.position - wspolrzedneOdrzutu.right * 0.3f - wspolrzedneOdrzutu.up * 0.6f), 1f);
         
         // Dodanie momentu obrotowego, aby obudowa pocisku obracała sie w losowym kierunku
-        obudowaOdPocisku.GetComponent<Rigidbody>().AddTorque(new Vector3(0, UnityEngine.Random.Range(100f, 500f), UnityEngine.Random.Range(100f, 1000f)), ForceMode.Force);
+        obudowaOdPocisku.GetComponent<Rigidbody>().AddTorque(new Vector3(0, Random.Range(100f, 500f), Random.Range(100f, 1000f)), ForceMode.Force);
         
         //Zniszczenie obudowy pocisku po X sekundach
         Destroy(obudowaOdPocisku, czasZniszczenia);
